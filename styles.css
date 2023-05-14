@@ -1,0 +1,299 @@
+:root {
+  --first: #f0ece2;
+  --second: #dfd3c3;
+  --third: #c7b198;
+  --fourth: #596e79;
+  --shadow: #99836a;
+}
+
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* form card styling start */
+.book-form {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  background-color: var(--third);
+  height: 400px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.book-form.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--third);
+  background-color: var(--first);
+}
+
+form input[type="text"]::placeholder,
+form input[type="number"]::placeholder {
+  font-weight: 400;
+  color: var(--second);
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  outline: solid 3px var(--second);
+  color: var(--third);
+}
+
+form label[for="read"] {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: var(--first);
+}
+
+form input[type="checkbox"] {
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--first);
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+}
+
+form input[type="checkbox"]:checked::before {
+  content: "✔";
+  text-align: center;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  color: var(--third);
+}
+
+form button {
+  height: 40px;
+  width: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--first);
+  color: var(--third);
+  border: none;
+  border-radius: 100px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+form button:hover {
+  filter: brightness(1.1);
+}
+
+form button:active {
+  filter: brightness(0.9);
+}
+/* form card styling end */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  margin: 0;
+  background-color: var(--third);
+  box-shadow: 0 3px 5px 0 var(--shadow);
+  z-index: 1;
+}
+
+.header h1 {
+  color: var(--first);
+  margin: 0;
+  font-size: 3.5rem;
+}
+
+.main {
+  flex-grow: 1;
+  background-color: var(--first);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* style add book button start */
+.new-book {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 50px;
+  width: 100px;
+  border: 3px solid var(--third);
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--first);
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.new-book:hover {
+  background-color: var(--third);
+  filter: brightness(1.1);
+}
+
+.new-book:active {
+  transition: 0.1s;
+  filter: brightness(0.9);
+}
+
+.new-book:hover .text {
+  color: var(--first);
+  transform: translatex(-30%);
+  transition: 0.3s ease-in-out;
+}
+
+.new-book .text {
+  color: var(--third);
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}
+
+.new-book:hover .plus-sign img {
+  transform: scale(1) rotate(180deg);
+  transition: 0.3s ease-in-out;
+}
+
+.plus-sign {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+  transition: 1s ease-in-out;
+}
+
+.plus-sign img {
+  transition: 0.5s;
+  transform: scale(0);
+  height: 16px;
+}
+/* style add book button end */
+
+/* style book list start */
+.book-list {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+/* style book list end */
+
+/* style book cards start */
+.book {
+  padding: 20px;
+  background-color: var(--third);
+  color: var(--first);
+  font-size: 1.7rem;
+  font-weight: bold;
+  height: 380px;
+  width: 270px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.read-btn,
+.rm-btn {
+  color: var(--first);
+  background-color: var(--third);
+  border: 3px solid var(--first);
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 38px;
+  width: 130px;
+  transition: 0.3s;
+}
+
+.read-btn:active,
+.rm-btn:active {
+  filter: brightness(1.1);
+}
+
+.read-btn.active {
+  transition: 0.3;
+  background-color: var(--first);
+  color: var(--third);
+}
+
+.read-btn.active:hover {
+  background-color: var(--third);
+  color: var(--first);
+}
+
+.read-btn:hover,
+.rm-btn:hover {
+  background-color: var(--first);
+  color: var(--third);
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-color: black;
+  min-height: 100vh;
+  min-width: 100vw;
+  opacity: 0.45;
+}
+
+.overlay.active {
+  display: block;
+}
