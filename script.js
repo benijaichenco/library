@@ -36,17 +36,6 @@ function addBookToLibrary(event) {
   const author = authorValue;
   const pages = pagesValue;
 
-  // alert if any of the input fields are invalid
-  if (title == "" || author == "" || pages == "") {
-    alert("Please fill empty fields");
-    return;
-  }
-
-  if (pages < 1) {
-    alert("Must be at least 1 page long");
-    return;
-  }
-
   // set the read value
   let read;
   if (readInput.checked) {
@@ -63,11 +52,14 @@ function addBookToLibrary(event) {
   myLibrary.push(newBook);
 
   // toggle form and overlay
-  form.classList.remove("active");
-  overlay.classList.remove("active");
-
-  // show books
-  displayBooks();
+  if (titleInput.validity.valid) {
+    form.classList.remove("active");
+    overlay.classList.remove("active");
+    // show books
+    displayBooks();
+  } else {
+    console.log(titleInput.validationMessage);
+  }
 }
 
 // toggle book form & overlay when book form pops up
