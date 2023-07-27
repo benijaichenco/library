@@ -308,4 +308,21 @@ form button:active {
   left: 10px;
   font-size: 0.8rem;
   color: red;
+  display: none;
+}
+
+.title + .error::after {
+  content: "Please fill out the book's title.";
+}
+
+.author + .error::after {
+  content: "Please fill out the author's name.";
+}
+
+.pages + .error::after {
+  content: "Must be at least 1 page long.";
+}
+
+.error.active {
+  display: block;
 }
