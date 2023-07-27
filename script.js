@@ -33,9 +33,24 @@ pages.addEventListener("input", inputError);
 
 function inputError() {
   if (!this.validity.valid) {
-    this.style.border = "1px solid red";
+    const classList = this.classList.value;
+    switch (classList) {
+      case "title":
+        this.setCustomValidity("Please fill out the title name.");
+        break;
+      case "author":
+        this.setCustomValidity("Please fill out the author name.");
+        break;
+      case "pages":
+        this.setCustomValidity("Must be at least 1 page long.");
+        break;
+    }
+    this.style.outline = "1px solid red";
+    this.nextElementSibling.textContent = this.validationMessage;
+    this.setCustomValidity("");
   } else {
-    this.style.border = "";
+    this.style.outline = "";
+    this.nextElementSibling.textContent = "";
   }
 }
 
