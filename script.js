@@ -33,24 +33,26 @@ pages.addEventListener("input", inputError);
 
 function inputError() {
   if (!this.validity.valid) {
-    const classList = this.classList.value;
-    switch (classList) {
-      case "title":
-        this.setCustomValidity("Please fill out the title name.");
-        break;
-      case "author":
-        this.setCustomValidity("Please fill out the author name.");
-        break;
-      case "pages":
-        this.setCustomValidity("Must be at least 1 page long.");
-        break;
-    }
+    // const classList = this.classList.value;
+    // switch (classList) {
+    //   case "title":
+    //     this.setCustomValidity("Please fill out the title name.");
+    //     break;
+    //   case "author":
+    //     this.setCustomValidity("Please fill out the author name.");
+    //     break;
+    //   case "pages":
+    //     this.setCustomValidity("Must be at least 1 page long.");
+    //     break;
+    // }
     this.style.outline = "1px solid red";
-    this.nextElementSibling.textContent = this.validationMessage;
+    this.nextElementSibling.classList.add("active");
+    // this.nextElementSibling.textContent = this.validationMessage;
     this.setCustomValidity("");
   } else {
+    this.nextElementSibling.classList.remove("active");
     this.style.outline = "";
-    this.nextElementSibling.textContent = "";
+    // this.nextElementSibling.textContent = "";
   }
 }
 
@@ -83,17 +85,20 @@ function addBookToLibrary(event) {
   // create a new book object with form value
   const newBook = new Book(title, author, pages, read);
 
-  // push new book to array
-  myLibrary.push(newBook);
-
   if (
     titleInput.validity.valid &&
     authorInput.validity.valid &&
     pagesInput.validity.valid
   ) {
+    // push new book to array
+    myLibrary.push(newBook);
     form.classList.remove("active");
     overlay.classList.remove("active");
     displayBooks();
+  } else {
+    document.querySelector(".title + .error").classList.add("active");
+    document.querySelector(".author + .error").classList.add("active");
+    document.querySelector(".pages + .error").classList.add("active");
   }
 }
 
