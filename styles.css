@@ -297,3 +297,11 @@ form button:active {
 .overlay.active {
   display: block;
 }
+
+.input-div {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+}
