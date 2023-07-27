@@ -20,18 +20,18 @@ class Book {
 }
 
 const title = document.querySelector("form .title");
-title.removeEventListener("input", displayTitleError);
-title.addEventListener("input", displayTitleError);
+title.removeEventListener("input", inputError);
+title.addEventListener("input", inputError);
 
 const author = document.querySelector("form .author");
-author.removeEventListener("input", displayTitleError);
-author.addEventListener("input", displayTitleError);
+author.removeEventListener("input", inputError);
+author.addEventListener("input", inputError);
 
 const pages = document.querySelector("form .pages");
-pages.removeEventListener("input", displayTitleError);
-pages.addEventListener("input", displayTitleError);
+pages.removeEventListener("input", inputError);
+pages.addEventListener("input", inputError);
 
-function displayTitleError() {
+function inputError() {
   if (!this.validity.valid) {
     this.style.border = "1px solid red";
   } else {
