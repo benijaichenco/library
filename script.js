@@ -19,6 +19,26 @@ class Book {
   }
 }
 
+const title = document.querySelector("form .title");
+title.removeEventListener("input", displayTitleError);
+title.addEventListener("input", displayTitleError);
+
+const author = document.querySelector("form .author");
+author.removeEventListener("input", displayTitleError);
+author.addEventListener("input", displayTitleError);
+
+const pages = document.querySelector("form .pages");
+pages.removeEventListener("input", displayTitleError);
+pages.addEventListener("input", displayTitleError);
+
+function displayTitleError() {
+  if (!this.validity.valid) {
+    this.style.border = "1px solid red";
+  } else {
+    this.style.border = "";
+  }
+}
+
 // create function to add books
 function addBookToLibrary(event) {
   // prevent form submitting from reloading page
@@ -51,14 +71,14 @@ function addBookToLibrary(event) {
   // push new book to array
   myLibrary.push(newBook);
 
-  // toggle form and overlay
-  if (titleInput.validity.valid) {
+  if (
+    titleInput.validity.valid &&
+    authorInput.validity.valid &&
+    pagesInput.validity.valid
+  ) {
     form.classList.remove("active");
     overlay.classList.remove("active");
-    // show books
     displayBooks();
-  } else {
-    console.log(titleInput.validationMessage);
   }
 }
 
