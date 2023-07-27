@@ -11,28 +11,37 @@
   <body>
     <div class="book-form">
       <form action="#" methoed="get">
-        <input
-          type="text"
-          class="title"
-          name="title"
-          placeholder="title"
-          required
-        />
-        <input
-          type="text"
-          class="author"
-          name="author"
-          placeholder="author"
-          required
-        />
-        <input
-          type="number"
-          class="pages"
-          name="pages"
-          placeholder="pages"
-          min="1"
-          required
-        />
+        <div class="input-div">
+          <input
+            type="text"
+            class="title"
+            name="title"
+            placeholder="title"
+            required
+          />
+          <span class="error" aria-live="poilte"></span>
+        </div>
+        <div class="input-div">
+          <input
+            type="text"
+            class="author"
+            name="author"
+            placeholder="author"
+            required
+          />
+          <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="input-div">
+          <input
+            type="number"
+            class="pages"
+            name="pages"
+            placeholder="pages"
+            min="1"
+            required
+          />
+          <span class="error" aria-live="polite"></span>
+        </div>
         <label for="read">
           <input type="checkbox" class="read" name="read" value="read" />
           Mark read
